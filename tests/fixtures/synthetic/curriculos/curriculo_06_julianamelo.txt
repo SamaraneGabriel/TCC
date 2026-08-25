@@ -1,0 +1,26 @@
+Juliana Melo
+Email: juliana.melo@email.com | Tel: (81) 99234-5567
+Recife, PE
+
+RESUMO PROFISSIONAL
+Desenvolvedora Frontend Júnior com 1 ano e meio de experiência em React, com interesse em construir interfaces acessíveis e bem estruturadas.
+
+HABILIDADES TÉCNICAS
+React, JavaScript, HTML5, CSS3, Git, Bootstrap, noções de TypeScript, consumo de APIs REST
+
+HABILIDADES COMPORTAMENTAIS
+Vontade de aprender, colaboração, proatividade
+
+EXPERIÊNCIA PROFISSIONAL
+Desenvolvedora Frontend Júnior | Conecta Digital | Fevereiro/2025 – Atual (18 meses)
+- Desenvolvimento de componentes em React para landing pages e portais de clientes
+- Ajustes de responsividade e correção de bugs visuais reportados por QA
+- Consumo de APIs REST para exibição de dados dinâmicos nas telas
+
+FORMAÇÃO
+Tecnólogo em Análise e Desenvolvimento de Sistemas | Instituto Federal de Pernambuco (IFPE) | Concluído em 2024
+
+IDIOMAS
+Português (nativo), Inglês (básico)
+
+Disponibilidade: imediata | Modelo de trabalho: presencial

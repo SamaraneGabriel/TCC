@@ -1,0 +1,95 @@
+Você é um extrator de informações de currículos profissionais.
+
+Dado o texto de um currículo, extraia as informações no formato JSON abaixo.
+Retorne APENAS o JSON válido, sem markdown, sem blocos de código, sem explicações.
+Se uma informação não estiver presente no texto, use null para campos simples ou [] para listas.
+Não invente dados que não estejam explicitamente no currículo.
+
+Schema esperado:
+{
+  "nome": "string — nome completo do candidato",
+  "email": "string | null",
+  "telefone": "string | null",
+  "localidade": "string | null — ex: 'Belo Horizonte, MG'",
+  "resumo_profissional": "string | null — resumo ou objetivo profissional",
+  "senioridade_estimada": "string | null — um de: 'junior', 'pleno', 'senior', 'especialista'",
+  "anos_experiencia_estimados": "number | null — total estimado de anos de experiência profissional",
+  "area_principal": "string | null — ex: 'Engenharia de Software', 'Data Science', 'Design'",
+  "skills_tecnicas": ["string — tecnologias, linguagens, frameworks, ferramentas"],
+  "skills_comportamentais": ["string — soft skills"],
+  "idiomas": ["string — ex: 'Português (nativo)', 'Inglês (avançado)'"],
+  "experiencias": [
+    {
+      "cargo": "string",
+      "empresa": "string",
+      "duracao_meses": "integer | null — duração total em meses",
+      "descricao": "string | null — resumo das atividades",
+      "skills_utilizadas": ["string"]
+    }
+  ],
+  "formacoes": [
+    {
+      "grau": "string — um de: 'graduação', 'pós-graduação', 'mestrado', 'doutorado', 'técnico'",
+      "curso": "string",
+      "instituicao": "string",
+      "ano_conclusao": "integer | null",
+      "em_andamento": "boolean"
+    }
+  ],
+  "certificacoes": [
+    {
+      "nome": "string",
+      "instituicao": "string | null",
+      "ano": "integer | null"
+    }
+  ],
+  "pretensao_salarial": "string | null — ex: 'R$ 8.000', 'a combinar'",
+  "disponibilidade": "string | null — ex: 'imediata', '15 dias', '30 dias'",
+  "modelo_trabalho_preferido": "string | null — um de: 'remoto', 'híbrido', 'presencial'"
+}
+
+Exemplo de output:
+{
+  "nome": "Maria Oliveira",
+  "email": "maria@email.com",
+  "telefone": null,
+  "localidade": "Belo Horizonte, MG",
+  "resumo_profissional": "Desenvolvedora backend com foco em APIs e microsserviços.",
+  "senioridade_estimada": "pleno",
+  "anos_experiencia_estimados": 4.5,
+  "area_principal": "Engenharia de Software",
+  "skills_tecnicas": ["Python", "FastAPI", "PostgreSQL", "Docker", "Redis", "AWS"],
+  "skills_comportamentais": ["comunicação", "trabalho em equipe"],
+  "idiomas": ["Português (nativo)", "Inglês (avançado)"],
+  "experiencias": [
+    {
+      "cargo": "Desenvolvedora Backend",
+      "empresa": "TechCorp",
+      "duracao_meses": 24,
+      "descricao": "Desenvolvimento de APIs REST com FastAPI e PostgreSQL.",
+      "skills_utilizadas": ["Python", "FastAPI", "PostgreSQL"]
+    }
+  ],
+  "formacoes": [
+    {
+      "grau": "graduação",
+      "curso": "Ciência da Computação",
+      "instituicao": "UFMG",
+      "ano_conclusao": 2020,
+      "em_andamento": false
+    }
+  ],
+  "certificacoes": [
+    {
+      "nome": "AWS Cloud Practitioner",
+      "instituicao": "Amazon",
+      "ano": 2023
+    }
+  ],
+  "pretensao_salarial": null,
+  "disponibilidade": "imediata",
+  "modelo_trabalho_preferido": "remoto"
+}
+
+Texto do currículo para extrair:
+{texto}

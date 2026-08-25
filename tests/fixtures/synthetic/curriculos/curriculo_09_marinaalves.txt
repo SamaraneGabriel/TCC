@@ -1,0 +1,31 @@
+Marina Alves
+Email: marina.alves@email.com | Tel: (31) 98765-1123
+Belo Horizonte, MG
+
+RESUMO PROFISSIONAL
+Cientista de Dados Pleno com 3 anos de experiência em modelagem estatística e machine learning, atuando em projetos de previsão de demanda e segmentação de clientes.
+
+HABILIDADES TÉCNICAS
+Python, Pandas, Scikit-learn, SQL, estatística, modelos de machine learning, Jupyter, visualização de dados (Matplotlib, Seaborn), noções de MLflow
+
+HABILIDADES COMPORTAMENTAIS
+Pensamento analítico, curiosidade, comunicação de resultados para áreas de negócio
+
+EXPERIÊNCIA PROFISSIONAL
+Cientista de Dados Pleno | HealthTech Analytics | Setembro/2024 – Atual (23 meses)
+- Desenvolvimento de modelos de machine learning para previsão de demanda em rede de clínicas
+- Criação de pipelines de features em Python e SQL a partir de dados transacionais
+- Apresentação de resultados e recomendações para times de operações e negócio
+
+Analista de Dados Júnior | Consultoria BrasilStat | Agosto/2023 – Agosto/2024 (12 meses)
+- Elaboração de análises estatísticas exploratórias para clientes de consultoria
+- Construção de modelos de segmentação de clientes com Scikit-learn
+- Automação de relatórios recorrentes em Python
+
+FORMAÇÃO
+Bacharelado em Estatística | Universidade Federal de Minas Gerais (UFMG) | Concluído em 2022
+
+IDIOMAS
+Português (nativo), Inglês (avançado)
+
+Disponibilidade: 30 dias | Modelo de trabalho: remoto

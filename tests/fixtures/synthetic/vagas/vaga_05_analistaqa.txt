@@ -1,0 +1,21 @@
+Analista de QA Pleno/Sênior — Automação de Testes
+QualityFirst Software | Porto Alegre, RS | Híbrido
+
+SOBRE A VAGA
+Buscamos um(a) analista de QA para fortalecer a estratégia de qualidade de um produto SaaS em expansão, com foco em automação de testes e integração contínua.
+
+RESPONSABILIDADES
+- Definir e implementar estratégias de automação de testes end-to-end e de API
+- Manter suítes de testes automatizados integradas ao pipeline de CI/CD
+- Elaborar e revisar casos de teste a partir de histórias de usuário
+- Colaborar com desenvolvedores na investigação e priorização de bugs
+
+REQUISITOS OBRIGATÓRIOS
+Automação de testes, Selenium ou Cypress, SQL, metodologias ágeis
+
+DIFERENCIAIS
+Python, CI/CD (Jenkins ou GitLab CI), testes de performance, certificação ISTQB
+
+Experiência mínima: 4 anos
+Formação: graduação em Ciência da Computação, Engenharia de Software ou áreas afins
+Regime: CLT

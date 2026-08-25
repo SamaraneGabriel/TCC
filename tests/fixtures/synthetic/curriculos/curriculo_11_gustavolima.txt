@@ -1,0 +1,31 @@
+Gustavo Lima
+Email: gustavo.lima@email.com | Tel: (41) 99123-6654
+Curitiba, PR
+
+RESUMO PROFISSIONAL
+Analista de DevOps Pleno com 3 anos de experiência em automação de infraestrutura e pipelines de CI/CD em ambientes de nuvem GCP.
+
+HABILIDADES TÉCNICAS
+Terraform, Docker, GCP, CI/CD (GitLab CI), Kubernetes (nível básico/intermediário), monitoramento, Bash, Git
+
+HABILIDADES COMPORTAMENTAIS
+Organização, resolução de problemas, colaboração com times de desenvolvimento
+
+EXPERIÊNCIA PROFISSIONAL
+Analista de DevOps Pleno | ServerHub Cloud | Junho/2024 – Atual (26 meses)
+- Automação de provisionamento de infraestrutura em GCP com Terraform
+- Manutenção de pipelines de CI/CD no GitLab CI para múltiplos times
+- Configuração de alertas e dashboards de monitoramento de infraestrutura
+
+Analista de DevOps Júnior | NetCore Soluções | Maio/2023 – Maio/2024 (12 meses)
+- Suporte à containerização de aplicações com Docker
+- Apoio na configuração de clusters Kubernetes em ambiente de homologação
+- Criação de scripts de automação em Bash para tarefas operacionais
+
+FORMAÇÃO
+Tecnólogo em Redes de Computadores | Universidade Tecnológica Federal do Paraná (UTFPR) | Concluído em 2022
+
+IDIOMAS
+Português (nativo), Inglês (intermediário)
+
+Disponibilidade: 15 dias | Modelo de trabalho: híbrido

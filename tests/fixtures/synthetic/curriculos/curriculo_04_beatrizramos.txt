@@ -1,0 +1,34 @@
+Beatriz Ramos
+Email: beatriz.ramos@email.com | Tel: (11) 97765-3312
+São Paulo, SP
+
+RESUMO PROFISSIONAL
+Desenvolvedora Frontend Sênior com 7 anos de experiência em React e TypeScript, com foco em performance, acessibilidade e arquitetura de aplicações escaláveis para produtos digitais de alto tráfego.
+
+HABILIDADES TÉCNICAS
+React, TypeScript, Next.js, Redux, HTML5, CSS3, Styled Components, Jest, Testing Library, Webpack, Git, APIs REST, GraphQL
+
+HABILIDADES COMPORTAMENTAIS
+Liderança técnica, comunicação com áreas de produto e design, mentoria
+
+EXPERIÊNCIA PROFISSIONAL
+Desenvolvedora Frontend Sênior | Digital House Tech | Janeiro/2022 – Atual (55 meses)
+- Liderança técnica da squad de frontend responsável pelo portal principal do produto, com mais de 2 milhões de usuários ativos
+- Migração da aplicação de React puro para Next.js, melhorando métricas de Core Web Vitals
+- Definição de padrões de componentização e revisão de código da equipe
+
+Desenvolvedora Frontend Pleno | AgênciaWeb Criativa | Março/2019 – Dezembro/2021 (34 meses)
+- Desenvolvimento de interfaces em React para múltiplos clientes de e-commerce
+- Implementação de testes automatizados com Jest e Testing Library
+- Integração de componentes com APIs REST fornecidas pelo time de backend
+
+FORMAÇÃO
+Bacharelado em Ciência da Computação | Universidade de São Paulo (USP) | Concluído em 2018
+
+CERTIFICAÇÕES
+Meta Front-End Developer Professional Certificate | Meta / Coursera | 2021
+
+IDIOMAS
+Português (nativo), Inglês (fluente)
+
+Disponibilidade: 30 dias | Modelo de trabalho: remoto

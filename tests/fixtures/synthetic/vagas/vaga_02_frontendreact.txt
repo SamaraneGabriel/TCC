@@ -1,0 +1,21 @@
+Desenvolvedor(a) Frontend Sênior — React
+InovaWeb Digital | São Paulo, SP | Remoto
+
+SOBRE A VAGA
+Estamos em busca de um(a) desenvolvedor(a) frontend sênior para liderar tecnicamente a evolução da interface de um produto digital de alto tráfego, com forte atenção a performance e experiência do usuário.
+
+RESPONSABILIDADES
+- Desenvolver interfaces em React e TypeScript com foco em performance e acessibilidade
+- Definir padrões de componentização e boas práticas de frontend para o time
+- Realizar revisão de código e mentoria de desenvolvedores pleno e júnior
+- Colaborar com times de produto, design e backend na definição de contratos de API
+
+REQUISITOS OBRIGATÓRIOS
+React, TypeScript, HTML5, CSS3, consumo de APIs REST, Git
+
+DIFERENCIAIS
+Next.js, testes automatizados (Jest, Testing Library), acessibilidade web (WCAG), GraphQL
+
+Experiência mínima: 5 anos
+Formação: graduação em Ciência da Computação, Sistemas de Informação ou áreas afins
+Regime: CLT

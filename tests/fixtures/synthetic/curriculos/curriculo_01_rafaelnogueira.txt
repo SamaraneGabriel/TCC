@@ -1,0 +1,34 @@
+Rafael Nogueira
+Email: rafael.nogueira@email.com | Tel: (11) 98432-1190
+São Paulo, SP
+
+RESUMO PROFISSIONAL
+Desenvolvedor Backend com 8 anos de experiência em Python, especializado em construção de APIs REST de alta performance e arquiteturas de microsserviços para produtos de médio e grande porte.
+
+HABILIDADES TÉCNICAS
+Python, Django, FastAPI, PostgreSQL, Redis, Docker, Kubernetes, AWS (EC2, S3, RDS), RabbitMQ, arquitetura de microsserviços, testes automatizados (pytest), Git, CI/CD (GitHub Actions)
+
+HABILIDADES COMPORTAMENTAIS
+Liderança técnica, comunicação com stakeholders, mentoria de desenvolvedores júnior
+
+EXPERIÊNCIA PROFISSIONAL
+Desenvolvedor Backend Sênior | TechNova Sistemas | Março/2021 – Atual (65 meses)
+- Liderança técnica de squad responsável por serviços de pagamento em arquitetura de microsserviços
+- Migração de monólito Django para serviços FastAPI, reduzindo tempo de resposta em 40%
+- Definição de padrões de código, revisão de pull requests e mentoria de 3 desenvolvedores júnior
+
+Desenvolvedor Backend Pleno | DataSoft Ltda | Janeiro/2018 – Fevereiro/2021 (38 meses)
+- Desenvolvimento de APIs REST para sistema de gestão de estoque utilizando Django e PostgreSQL
+- Implementação de filas assíncronas com RabbitMQ para processamento de pedidos
+- Participação em cerimônias ágeis (Scrum) e escrita de testes automatizados
+
+FORMAÇÃO
+Bacharelado em Ciência da Computação | Universidade de São Paulo (USP) | Concluído em 2017
+
+CERTIFICAÇÕES
+AWS Certified Solutions Architect – Associate | Amazon Web Services | 2022
+
+IDIOMAS
+Português (nativo), Inglês (avançado)
+
+Disponibilidade: 30 dias | Modelo de trabalho: remoto

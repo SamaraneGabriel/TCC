@@ -1,0 +1,21 @@
+Engenheiro(a) de Dados Pleno/Sênior
+DataFlow Analytics | São Paulo, SP | Híbrido
+
+SOBRE A VAGA
+Buscamos um(a) engenheiro(a) de dados para atuar na construção e manutenção de pipelines analíticos que sustentam decisões de negócio em múltiplas áreas da empresa.
+
+RESPONSABILIDADES
+- Construir e manter pipelines de ETL/ELT utilizando Airflow e dbt
+- Modelar dados analíticos em data warehouse, garantindo qualidade e consistência
+- Escrever consultas SQL complexas para consolidação e validação de dados
+- Colaborar com times de ciência de dados e BI na disponibilização de dados
+
+REQUISITOS OBRIGATÓRIOS
+SQL, Apache Airflow, dbt, Python, modelagem de dados
+
+DIFERENCIAIS
+Apache Spark, AWS (Redshift, S3, Glue), BigQuery, Kafka
+
+Experiência mínima: 3 anos
+Formação: graduação em Ciência da Computação, Estatística, Engenharia ou áreas afins
+Regime: CLT

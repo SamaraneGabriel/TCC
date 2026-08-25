@@ -1,0 +1,31 @@
+Diego Martins
+Email: diego.martins@email.com | Tel: (81) 98567-2298
+Recife, PE
+
+RESUMO PROFISSIONAL
+Desenvolvedor Mobile Pleno com 3 anos de experiência em Flutter, atuando na construção de aplicativos multiplataforma para clientes de diferentes segmentos.
+
+HABILIDADES TÉCNICAS
+Flutter, Dart, Firebase, Provider/Bloc, Git, integração com APIs REST, publicação em Google Play e App Store
+
+HABILIDADES COMPORTAMENTAIS
+Autonomia, comunicação com clientes, resolução de problemas
+
+EXPERIÊNCIA PROFISSIONAL
+Desenvolvedor Mobile Pleno | Flutter House Tech | Agosto/2024 – Atual (24 meses)
+- Desenvolvimento de aplicativos multiplataforma em Flutter para clientes dos setores de saúde e logística
+- Integração com Firebase (Authentication, Firestore, Cloud Messaging)
+- Gerenciamento de estado com Bloc em aplicações de médio porte
+
+Desenvolvedor Mobile Júnior | AppFácil Soluções | Julho/2023 – Julho/2024 (12 meses)
+- Manutenção de aplicativos Flutter existentes e correção de bugs
+- Implementação de telas a partir de protótipos no Figma
+- Integração de funcionalidades com APIs REST fornecidas pelo backend
+
+FORMAÇÃO
+Tecnólogo em Análise e Desenvolvimento de Sistemas | Instituto Federal de Pernambuco (IFPE) | Concluído em 2023
+
+IDIOMAS
+Português (nativo), Inglês (intermediário)
+
+Disponibilidade: imediata | Modelo de trabalho: remoto

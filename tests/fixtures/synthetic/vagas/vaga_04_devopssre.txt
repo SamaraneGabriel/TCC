@@ -1,0 +1,21 @@
+Especialista em DevOps / SRE
+CloudNine Systems | São Paulo, SP | Remoto
+
+SOBRE A VAGA
+Procuramos um(a) especialista em DevOps/SRE para fortalecer a confiabilidade e a escalabilidade da infraestrutura em nuvem que sustenta os principais produtos da empresa.
+
+RESPONSABILIDADES
+- Gerenciar clusters Kubernetes e infraestrutura como código com Terraform
+- Manter e evoluir pipelines de CI/CD para múltiplos times de desenvolvimento
+- Implementar e monitorar métricas de observabilidade (Prometheus/Grafana)
+- Atuar em resposta a incidentes de produção, garantindo alta disponibilidade
+
+REQUISITOS OBRIGATÓRIOS
+Kubernetes, Docker, Terraform, CI/CD, AWS ou GCP
+
+DIFERENCIAIS
+Prometheus, Grafana, Python ou Bash para automação, arquitetura de microsserviços, certificação CKA
+
+Experiência mínima: 4 anos
+Formação: graduação em Ciência da Computação, Engenharia ou áreas afins
+Regime: CLT

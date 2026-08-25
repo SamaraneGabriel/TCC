@@ -1,0 +1,31 @@
+Patrícia Souza
+Email: patricia.souza@email.com | Tel: (51) 99345-8821
+Porto Alegre, RS
+
+RESUMO PROFISSIONAL
+Engenheira de Dados Pleno com 3 anos de experiência em construção de pipelines analíticos, atuando com SQL, dbt e Airflow para times de dados de empresas de varejo e tecnologia.
+
+HABILIDADES TÉCNICAS
+SQL, Python, dbt, Apache Airflow, BigQuery, Docker, modelagem de dados, Git, Looker
+
+HABILIDADES COMPORTAMENTAIS
+Organização, atenção a detalhes, comunicação com áreas de negócio
+
+EXPERIÊNCIA PROFISSIONAL
+Engenheira de Dados Pleno | Vetor Dados | Julho/2024 – Atual (25 meses)
+- Construção de modelos analíticos em dbt sobre data warehouse em BigQuery
+- Orquestração de pipelines de ETL com Airflow para consolidação de dados de vendas
+- Criação de documentação de linhagem de dados e testes de qualidade em dbt
+
+Analista de Dados Júnior | Comércio Sul Varejo | Agosto/2023 – Junho/2024 (11 meses)
+- Elaboração de consultas SQL complexas para relatórios gerenciais
+- Criação de dashboards em Looker para acompanhamento de indicadores de vendas
+- Apoio na migração de planilhas para pipelines automatizados
+
+FORMAÇÃO
+Bacharelado em Estatística | Universidade Federal do Rio Grande do Sul (UFRGS) | Concluído em 2022
+
+IDIOMAS
+Português (nativo), Inglês (intermediário)
+
+Disponibilidade: 15 dias | Modelo de trabalho: híbrido

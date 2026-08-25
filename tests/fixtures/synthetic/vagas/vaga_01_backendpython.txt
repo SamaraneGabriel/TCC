@@ -1,0 +1,21 @@
+Desenvolvedor(a) Backend Pleno/Sênior — Python
+TechCorp Solutions | São Paulo, SP | Remoto
+
+SOBRE A VAGA
+Buscamos um(a) desenvolvedor(a) backend para atuar na construção e evolução de APIs REST de um produto SaaS em crescimento, com forte foco em performance e escalabilidade.
+
+RESPONSABILIDADES
+- Desenvolver e manter APIs REST utilizando Python (FastAPI ou Django)
+- Modelar e otimizar consultas em banco de dados PostgreSQL
+- Participar de decisões de arquitetura e revisão de código
+- Colaborar com times de frontend, dados e produto na definição de contratos de API
+
+REQUISITOS OBRIGATÓRIOS
+Python, FastAPI ou Django, PostgreSQL, Docker, APIs REST, versionamento com Git
+
+DIFERENCIAIS
+AWS, arquitetura de microsserviços, RabbitMQ ou outra ferramenta de mensageria, testes automatizados com pytest
+
+Experiência mínima: 3 anos
+Formação: graduação em Ciência da Computação, Sistemas de Informação ou áreas afins
+Regime: CLT

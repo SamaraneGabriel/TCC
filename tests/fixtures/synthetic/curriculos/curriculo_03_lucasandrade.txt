@@ -1,0 +1,26 @@
+Lucas Andrade
+Email: lucas.andrade@email.com | Tel: (41) 98123-7745
+Curitiba, PR
+
+RESUMO PROFISSIONAL
+Desenvolvedor Backend Júnior com 1 ano de experiência em Node.js, iniciando carreira no desenvolvimento de APIs para aplicações web de pequeno e médio porte.
+
+HABILIDADES TÉCNICAS
+JavaScript, Node.js, Express, MongoDB, Git, HTML, CSS, APIs REST, noções de Docker
+
+HABILIDADES COMPORTAMENTAIS
+Vontade de aprender, organização, trabalho em equipe
+
+EXPERIÊNCIA PROFISSIONAL
+Desenvolvedor Backend Júnior | WebPixel Agência Digital | Agosto/2025 – Atual (12 meses)
+- Desenvolvimento de rotas de API REST em Node.js e Express para sites institucionais
+- Modelagem de coleções MongoDB para armazenamento de dados de clientes
+- Correção de bugs e pequenos ajustes em sistemas legados da agência
+
+FORMAÇÃO
+Tecnólogo em Análise e Desenvolvimento de Sistemas | Universidade Tecnológica Federal do Paraná (UTFPR) | Concluído em 2024
+
+IDIOMAS
+Português (nativo), Inglês (básico)
+
+Disponibilidade: imediata | Modelo de trabalho: presencial

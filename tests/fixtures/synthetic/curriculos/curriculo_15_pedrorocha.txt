@@ -1,0 +1,26 @@
+Pedro Henrique Rocha
+Email: pedro.rocha@email.com | Tel: (31) 99678-1145
+Belo Horizonte, MG
+
+RESUMO PROFISSIONAL
+Analista de QA Júnior com 1 ano de experiência em testes manuais, iniciando atuação em automação de testes e com interesse em evoluir para uma posição de QA pleno.
+
+HABILIDADES TÉCNICAS
+Testes manuais, automação de testes (Selenium, em aprendizado), SQL básico, Git, metodologias ágeis (Scrum)
+
+HABILIDADES COMPORTAMENTAIS
+Vontade de aprender, atenção a detalhes, colaboração
+
+EXPERIÊNCIA PROFISSIONAL
+Analista de QA Júnior | Comércio Digital MG | Agosto/2025 – Atual (12 meses)
+- Execução de testes manuais funcionais em sistema de e-commerce
+- Elaboração de casos de teste a partir de histórias de usuário
+- Início de estudos e primeiras implementações de scripts de automação com Selenium
+
+FORMAÇÃO
+Tecnólogo em Análise e Desenvolvimento de Sistemas | Pontifícia Universidade Católica de Minas Gerais (PUC Minas) | Concluído em 2024
+
+IDIOMAS
+Português (nativo), Inglês (básico)
+
+Disponibilidade: imediata | Modelo de trabalho: presencial

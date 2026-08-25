@@ -1,0 +1,31 @@
+Camila Duarte
+Email: camila.duarte@email.com | Tel: (31) 99871-4523
+Belo Horizonte, MG
+
+RESUMO PROFISSIONAL
+Desenvolvedora Backend Pleno com 4 anos de experiência em Python, atuando no desenvolvimento de APIs REST e integrações de sistemas para plataformas de e-commerce.
+
+HABILIDADES TÉCNICAS
+Python, FastAPI, Flask, PostgreSQL, Docker, RabbitMQ, SQLAlchemy, Git, testes automatizados (pytest), APIs REST, Linux
+
+HABILIDADES COMPORTAMENTAIS
+Trabalho em equipe, proatividade, comunicação clara
+
+EXPERIÊNCIA PROFISSIONAL
+Desenvolvedora Backend Pleno | Nexus Tecnologia | Junho/2023 – Atual (38 meses)
+- Desenvolvimento e manutenção de APIs REST em FastAPI para plataforma de e-commerce
+- Modelagem de banco de dados PostgreSQL e otimização de queries críticas
+- Implementação de integração com gateways de pagamento externos
+
+Desenvolvedora Backend Júnior | StartUp Brasil | Fevereiro/2021 – Maio/2023 (27 meses)
+- Manutenção de sistema interno em Flask e correção de bugs reportados por usuários
+- Criação de scripts de automação em Python para rotinas de importação de dados
+- Participação em cerimônias ágeis e escrita de testes unitários
+
+FORMAÇÃO
+Bacharelado em Sistemas de Informação | Pontifícia Universidade Católica de Minas Gerais (PUC Minas) | Concluído em 2020
+
+IDIOMAS
+Português (nativo), Inglês (intermediário)
+
+Disponibilidade: 15 dias | Modelo de trabalho: híbrido

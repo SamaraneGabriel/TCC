@@ -1,0 +1,31 @@
+Thiago Farias
+Email: thiago.farias@email.com | Tel: (21) 98456-2290
+Rio de Janeiro, RJ
+
+RESUMO PROFISSIONAL
+Desenvolvedor Frontend Pleno com 4 anos de experiência em Angular, atuando em sistemas corporativos e portais internos para empresas do setor financeiro.
+
+HABILIDADES TÉCNICAS
+Angular, TypeScript, RxJS, HTML5, CSS3, SCSS, NgRx, Jasmine, Karma, Git, APIs REST
+
+HABILIDADES COMPORTAMENTAIS
+Organização, atenção a detalhes, comunicação com stakeholders de negócio
+
+EXPERIÊNCIA PROFISSIONAL
+Desenvolvedor Frontend Pleno | Grupo Meridian | Setembro/2023 – Atual (35 meses)
+- Desenvolvimento de módulos em Angular para sistema interno de gestão financeira
+- Implementação de gerenciamento de estado com NgRx em aplicação de médio porte
+- Escrita de testes unitários com Jasmine e Karma
+
+Desenvolvedor Frontend Júnior | WebSoluções | Julho/2021 – Agosto/2023 (25 meses)
+- Manutenção de portais institucionais desenvolvidos em Angular
+- Correção de bugs e ajustes de responsividade em componentes existentes
+- Integração de telas com APIs REST fornecidas pelo backend
+
+FORMAÇÃO
+Bacharelado em Engenharia de Software | Universidade Federal Fluminense (UFF) | Concluído em 2021
+
+IDIOMAS
+Português (nativo), Inglês (intermediário)
+
+Disponibilidade: 15 dias | Modelo de trabalho: híbrido

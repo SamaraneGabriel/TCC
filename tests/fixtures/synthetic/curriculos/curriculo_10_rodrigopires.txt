@@ -1,0 +1,34 @@
+Rodrigo Pires
+Email: rodrigo.pires@email.com | Tel: (11) 97654-3321
+São Paulo, SP
+
+RESUMO PROFISSIONAL
+Engenheiro de DevOps/SRE Sênior com 7 anos de experiência em infraestrutura como código, orquestração de containers e confiabilidade de sistemas críticos em ambientes de nuvem.
+
+HABILIDADES TÉCNICAS
+Kubernetes, Docker, Terraform, AWS, CI/CD (Jenkins, GitHub Actions), Prometheus, Grafana, Python, Bash, arquitetura de microsserviços, observabilidade
+
+HABILIDADES COMPORTAMENTAIS
+Liderança técnica, resolução de problemas sob pressão, comunicação com times de desenvolvimento
+
+EXPERIÊNCIA PROFISSIONAL
+Engenheiro de DevOps/SRE Sênior | CloudScale Tecnologia | Fevereiro/2021 – Atual (66 meses)
+- Liderança da migração de infraestrutura on-premise para Kubernetes na AWS, garantindo 99,9% de disponibilidade
+- Implementação de infraestrutura como código com Terraform para múltiplos ambientes
+- Definição de dashboards de observabilidade com Prometheus e Grafana e criação de runbooks de incidentes
+
+Analista de DevOps Pleno | InfraTech Sistemas | Janeiro/2019 – Janeiro/2021 (24 meses)
+- Automação de pipelines de CI/CD com Jenkins para múltiplos times de desenvolvimento
+- Containerização de aplicações legadas com Docker
+- Suporte a incidentes de produção e criação de scripts de automação em Bash e Python
+
+FORMAÇÃO
+Bacharelado em Ciência da Computação | Universidade Estadual de Campinas (Unicamp) | Concluído em 2018
+
+CERTIFICAÇÕES
+Certified Kubernetes Administrator (CKA) | Cloud Native Computing Foundation | 2022
+
+IDIOMAS
+Português (nativo), Inglês (avançado)
+
+Disponibilidade: 30 dias | Modelo de trabalho: remoto

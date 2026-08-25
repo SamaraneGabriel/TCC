@@ -1,0 +1,79 @@
+{
+  "nome": "Luca Gonzaga",
+  "email": "lucalourenco@gmail.com",
+  "telefone": "+55 (31) 99899-5800",
+  "localidade": "Belo Horizonte, MG",
+  "resumo_profissional": "Cientista da computação e Product Owner na Nexos Digital, com experiência em gestão de produtos, liderança de equipes e visão estratégica de negócios.",
+  "senioridade_estimada": "junior",
+  "anos_experiencia_estimados": 2.0,
+  "area_principal": "Product Management",
+  "skills_tecnicas": [
+    "Azure DevOps",
+    "Jira",
+    "Scrum",
+    "Kanban",
+    "Java",
+    "Spring Boot",
+    "Git",
+    "Github",
+    "React",
+    "Node",
+    "SQL",
+    "PostgreSQL",
+    "Docker",
+    "Kubernetes",
+    "Airflow"
+  ],
+  "skills_comportamentais": [
+    "Liderança",
+    "Comunicação",
+    "Gestão de produtos",
+    "Gestão de equipes",
+    "Mentalidade Ágil",
+    "Visão estratégica",
+    "Negociação",
+    "Resolução de conflitos",
+    "Levantamento de requisitos"
+  ],
+  "idiomas": [
+    "Português (nativo)",
+    "Inglês (fluente)"
+  ],
+  "experiencias": [
+    {
+      "cargo": "Product Owner",
+      "empresa": "Nexos Digital",
+      "duracao_meses": 15,
+      "descricao": "Responsável pelo backlog da área de Atacado (B2B), refinamento de epics, especificação de regras de FIDC e desenvolvimento de portal de dashboards.",
+      "skills_utilizadas": [
+        "Azure DevOps",
+        "FIDC",
+        "Airflow",
+        "Kubernetes"
+      ]
+    },
+    {
+      "cargo": "Fundador, Presidente e Diretor Comercial",
+      "empresa": "COMP Empresa Júnior",
+      "duracao_meses": 40,
+      "descricao": "Gestão de relacionamento com clientes, negociações, levantamento de requisitos e estruturação de backlog.",
+      "skills_utilizadas": [
+        "Gestão de produtos",
+        "Negociação"
+      ]
+    }
+  ],
+  "formacoes": [
+    {
+      "grau": "graduação",
+      "curso": "Ciência da Computação",
+      "instituicao": "PUC Minas",
+      "ano_conclusao": 2026,
+      "em_andamento": true
+    }
+  ],
+  "certificacoes": [],
+  "pretensao_salarial": null,
+  "disponibilidade": null,
+  "modelo_trabalho_preferido": null
+}
