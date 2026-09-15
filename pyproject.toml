@@ -18,6 +18,14 @@ dependencies = [
 [project.optional-dependencies]
 openai = ["openai>=1.30"]
 ui = ["streamlit>=1.30"]
+# Seção 6.3 do plano de avaliação. Precision@K/nDCG@K/Recall@K e o bootstrap são
+# implementados à mão (exigência do plano); daqui vêm só kappa e Wilcoxon.
+eval = [
+    "pandas>=2.0",
+    "numpy>=1.26",
+    "scikit-learn>=1.4",
+    "scipy>=1.11",
+]
 dev = [
     "pytest>=8.0",
     "python-dotenv>=1.0",
