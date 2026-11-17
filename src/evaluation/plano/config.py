@@ -7,11 +7,17 @@ config*. Por isso todo valor marcado `PARÂMETRO` vive aqui (sobrescrevível por
 **derivado** — `n_calibracao_por_grupo`, `n_b` e `n_c` são propriedades
 calculadas, não constantes.
 
-Os defaults reproduzem exatamente os números citados no plano:
+Com os números do texto do plano (N_TOTAL=4817, TOP_POOL=200) os derivados são:
     n_calibracao_por_grupo = 97   (e=0,10, sem fpc)
     n_b                    = 15   (e=0,25, fpc com N=175)
     n_c                    = 95   (e=0,10, fpc com N=4617)
-Mudar `K`, `N_TOTAL` ou `TOP_POOL` recalcula tudo — é esse o ponto.
+Os defaults aqui são os do projeto real, não os do texto: `n_total` é o banco
+após a deduplicação de 2026-09-16 (385) e `top_pool` foi baixado de 200 para
+100 por decisão de 2026-09-22 — com 385 currículos, um pool de 200 seria 52%
+do banco inteiro e o estrato C (o "resto do mundo" usado para estimar
+Recall@K) ficaria com 185 itens. Com TOP_POOL=100 os derivados viram
+n_b=13 e n_c=73. Mudar `K`, `N_TOTAL` ou `TOP_POOL` recalcula tudo, é esse o
+ponto.
 """
 from math import ceil
 
@@ -61,8 +67,10 @@ class ConfigAvaliacao(BaseSettings):
 
     # --- PARÂMETROS: conferir antes de rodar ---
     k: int = 25                      # limite de exibição do sistema ao recrutador
-    n_total: int = 4817              # total de currículos no banco
-    top_pool: int = 200              # pool recuperado por vaga; define os estratos A e B
+    n_total: int = 385               # currículos no banco (após a dedup de 2026-09-16;
+                                     # o plano cita 4817, que era o dataset antes da ingestão real)
+    top_pool: int = 100              # pool recuperado por vaga; define os estratos A e B
+                                     # (o texto do plano diz 200, pensado para N_TOTAL=4817)
     n_vagas_estudo: int = 60         # vagas julgadas pelo LLM-juiz após calibração
     n_vagas_calibracao: int = 3      # subconjunto de onde sai a amostra de calibração
 
@@ -78,9 +86,11 @@ class ConfigAvaliacao(BaseSettings):
     kappa_limiar_humano: float = 0.41
 
     # --- Frações de anotação ---
-    double_label_fracao: float = 0.15    # 2ª anotação humana na calibração
-    auditoria_llm_fracao: float = 0.10   # checagem humana cega sobre o que o LLM julgou
-    auditoria_llm_minimo: int = 5        # piso por estrato, por vaga
+    double_label_fracao: float = 0.15    # 2ª anotação humana independente, na calibração
+    # A auditoria humana contínua (§8.5 da spec) foi removida por decisão de
+    # 2026-09-22: contradizia a primeira linha da própria spec ("anotação manual
+    # restrita à amostra de calibração") e custaria 1.020 julgamentos humanos
+    # além dos 194. Ver a seção de desvios em context/10_PLANO_AVALIACAO.md.
 
     # --- Mínimos de composição (seções 2.3 e 3.2) ---
     min_substrato_calibracao: int = 30   # itens de A e de B, cada, no grupo AB
@@ -136,11 +146,6 @@ class ConfigAvaliacao(BaseSettings):
     def itens_por_vaga(self) -> int:
         """Total anotado por vaga: censo de A + amostras de B e C."""
         return self.k + self.n_b + self.n_c
-
-    def n_auditoria(self, n_estrato: int) -> int:
-        """Seção 7.5: `max(mínimo, ceil(fração * n))`, limitado ao tamanho do estrato."""
-        alvo = max(self.auditoria_llm_minimo, ceil(self.auditoria_llm_fracao * n_estrato))
-        return min(alvo, n_estrato)
 
     # ------------------------------------------------------------------
     # Consistência

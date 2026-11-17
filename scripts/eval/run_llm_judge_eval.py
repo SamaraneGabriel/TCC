@@ -88,7 +88,11 @@ def main() -> None:
     vaga_extractor = VagaExtractor(create_extractor(settings))
     embedder = create_embedder(settings)
     store = CurriculoStore(path=settings.qdrant_local_path)
-    judge = GeminiJudge(api_key=settings.gemini_api_key)
+    judge = GeminiJudge(
+        api_key=settings.gemini_api_key,
+        project=settings.gcp_project,
+        location=settings.gcp_location,
+    )
 
     resumo = []
     for i, arquivo in enumerate(arquivos):

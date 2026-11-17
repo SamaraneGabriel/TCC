@@ -46,8 +46,19 @@ class Julgamento:
 
 
 class GeminiJudge:
-    def __init__(self, api_key: str, model: str = "gemini-3.1-flash-lite"):
-        self._client = genai.Client(api_key=api_key)
+    def __init__(
+        self,
+        api_key: str = "",
+        model: str = "gemini-3.1-flash-lite",
+        project: str = "",
+        location: str = "us-central1",
+    ):
+        # Ver GeminiExtractor (src/extraction/providers/gemini.py) — mesma lógica de
+        # escolha Vertex AI vs Developer API.
+        if project:
+            self._client = genai.Client(vertexai=True, project=project, location=location)
+        else:
+            self._client = genai.Client(api_key=api_key)
         self._model = model
         self._config = types.GenerateContentConfig(
             response_mime_type="application/json",
@@ -121,7 +132,7 @@ def _montar_prompt(vaga: VagaEstruturada, candidatos_rotulados: list[tuple[str, 
     return f"""Você é um avaliador especialista em recrutamento técnico. Avalie, de forma objetiva e imparcial, quão adequado cada candidato é para a vaga abaixo. Não invente informação que não esteja nos dados apresentados.
 
 VAGA
-Título: {vaga.titulo}
+Título: {vaga.titulo or 'não informado'}
 Área: {vaga.area or 'não informada'}
 Senioridade: {vaga.senioridade or 'não informada'}
 Localidade: {vaga.localidade or 'não informada'}

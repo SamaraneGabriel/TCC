@@ -6,11 +6,11 @@ from ..base import BaseExtractor
 class OpenAIExtractor(BaseExtractor):
     def __init__(self, api_key: str, model: str = "gpt-4o-mini"):
         self._client = OpenAI(api_key=api_key)
-        self._model = model
+        self.model = model
 
     def call(self, prompt: str) -> str:
         response = self._client.chat.completions.create(
-            model=self._model,
+            model=self.model,
             response_format={"type": "json_object"},
             temperature=0.0,
             messages=[

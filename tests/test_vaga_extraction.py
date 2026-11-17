@@ -133,10 +133,23 @@ def test_extract_raises_on_invalid_json():
         VagaExtractor(MockExtractor("not json at all")).extract(SAMPLE_VAGA_TEXT)
 
 
-def test_extract_raises_on_missing_required_field():
-    without_titulo = {k: v for k, v in SAMPLE_JSON.items() if k != "titulo"}
+def test_extract_raises_on_wrong_field_type():
+    """Não há mais campo obrigatório em VagaEstruturada (ver `titulo`, desvio D8),
+    mas tipo errado continua tendo que falhar — é o que impede o LLM devolver
+    `skills_obrigatorias` como string e isso passar batido."""
+    tipo_errado = {**SAMPLE_JSON, "skills_obrigatorias": "Python, Django"}
     with pytest.raises(ExtractionError, match="validation failed"):
-        VagaExtractor(MockExtractor(without_titulo)).extract(SAMPLE_VAGA_TEXT)
+        VagaExtractor(MockExtractor(tipo_errado)).extract(SAMPLE_VAGA_TEXT)
+
+
+def test_extract_sem_titulo_e_aceito():
+    """Anúncio real que é só uma lista de requisitos, com o cargo em campo separado
+    fora do corpo do texto (`vaga_3626317669` do estudo). Antes do desvio D8 isso
+    derrubava a extração de uma vaga válida."""
+    sem_titulo = {k: v for k, v in SAMPLE_JSON.items() if k != "titulo"}
+    result = VagaExtractor(MockExtractor(sem_titulo)).extract(SAMPLE_VAGA_TEXT)
+    assert result.titulo is None
+    assert result.skills_obrigatorias  # o resto do anúncio continua extraído
 
 
 def test_extract_minimal_vaga_all_optionals_none():
@@ -155,13 +168,19 @@ def test_extract_minimal_vaga_all_optionals_none():
 
 @pytest.mark.integration
 def test_gemini_extracts_sample_vaga():
+    """Passa pelo factory de propósito: é ele que decide entre Vertex AI e Developer
+    API a partir de `GCP_PROJECT`. Instanciar `GeminiExtractor` direto com a api_key,
+    como este teste fazia antes, testava um caminho que a aplicação não usa — e batia
+    503/429 no tier gratuito enquanto o Vertex respondia normalmente."""
     from src.config import settings
-    from src.extraction.providers.gemini import GeminiExtractor
+    from src.extraction.factory import create_extractor
 
-    if not settings.gemini_api_key or settings.gemini_api_key == "No Key Provided":
-        pytest.skip("GEMINI_API_KEY not set in .env")
+    if not settings.gcp_project and (
+        not settings.gemini_api_key or settings.gemini_api_key == "No Key Provided"
+    ):
+        pytest.skip("nem GCP_PROJECT nem GEMINI_API_KEY configurados no .env")
 
-    llm = GeminiExtractor(api_key=settings.gemini_api_key, model=settings.gemini_model)
+    llm = create_extractor(settings)
     result = VagaExtractor(llm).extract(SAMPLE_VAGA_TEXT)
 
     assert isinstance(result, VagaEstruturada)

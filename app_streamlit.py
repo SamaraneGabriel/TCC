@@ -71,6 +71,7 @@ with tab_buscar:
         st.caption(f"Usando o texto extraído de **{arquivo_vaga.name}** ({len(texto_vaga)} caracteres).")
 
     top_k = st.slider("Quantos currículos retornar", 1, 15, 5)
+    ocultar_nomes = st.toggle("Ocultar nomes dos candidatos", value=False)
     buscar = st.button("Buscar candidatos", type="primary")
 
     if buscar and texto_vaga.strip():
@@ -93,12 +94,20 @@ with tab_buscar:
                 with st.container(border=True):
                     col_info, col_score = st.columns([3, 1])
                     with col_info:
-                        st.markdown(f"**#{r.rank} — {c.nome}**")
-                        st.caption(
-                            f"{c.senioridade_estimada or '?'} · {c.localidade or '?'} · "
-                            f"{c.modelo_trabalho_preferido or '?'}"
-                        )
-                        st.write(", ".join(c.skills_tecnicas) or "sem skills informadas")
+                        nome = (c.nome if c.nome and c.nome != "Nome não informado" and not ocultar_nomes
+                                else f"Candidato {c.id[:8]}")
+                        st.markdown(f"**#{r.rank} — {nome}**")
+                        detalhes = [c.area_principal, c.senioridade_estimada,
+                                    f"{round(c.anos_experiencia_estimados)} anos de experiência" if c.anos_experiencia_estimados else None,
+                                    c.localidade if c.localidade and c.localidade != "City, State" else None, c.modelo_trabalho_preferido]
+                        st.caption(" · ".join(d for d in detalhes if d) or "—")
+                        if r.skills_match:
+                            st.markdown("**Em comum com a vaga:** " + ", ".join(f"`{s}`" for s in r.skills_match))
+                        outras = [s for s in dict.fromkeys(c.skills_tecnicas)
+                                  if s.lower() not in {m.lower() for m in r.skills_match}]
+                        MAX_SKILLS = 12
+                        resto = f" (+{len(outras) - MAX_SKILLS})" if len(outras) > MAX_SKILLS else ""
+                        st.caption("Outras skills: " + (", ".join(outras[:MAX_SKILLS]) + resto if outras else "—"))
                     with col_score:
                         st.metric("Score final", f"{r.score_final:.3f}")
                         st.caption(
@@ -127,8 +136,11 @@ with tab_ingestao:
         sucesso = 0
         for i, arquivo in enumerate(arquivos, start=1):
             try:
-                curriculo = ingerir_curriculo(extrair_texto(arquivo), curriculo_extractor, embedder, store)
-                st.success(f"{arquivo.name} → {curriculo.nome}")
+                curriculo = ingerir_curriculo(
+                    extrair_texto(arquivo), curriculo_extractor, embedder, store,
+                    arquivo_fonte=arquivo.name,
+                )
+                st.success(f"{arquivo.name} → {curriculo.nome or 'Nome não informado'}")
                 sucesso += 1
             except Exception as e:
                 st.error(f"{arquivo.name}: {e}")

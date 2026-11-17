@@ -8,7 +8,11 @@ class Requisito(BaseModel):
 
 
 class VagaEstruturada(BaseModel):
-    titulo: str
+    # Opcional desde 2026-09-22 (desvio D8 do plano de avaliação): anúncios reais
+    # do LinkedIn às vezes trazem só a lista de requisitos, com o cargo em campo
+    # separado fora do corpo do texto. Exigir `titulo` fazia o extrator falhar em
+    # anúncio válido — mesmo padrão já corrigido em `CurriculoEstruturado.nome`.
+    titulo: Optional[str] = None
     empresa: Optional[str] = None
     localidade: Optional[str] = None
     modelo_trabalho: Optional[str] = None  # "remoto", "híbrido", "presencial"

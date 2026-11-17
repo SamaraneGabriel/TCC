@@ -165,10 +165,13 @@ def test_extract_raises_on_invalid_json():
         CurriculoExtractor(MockExtractor("not json at all")).extract(SAMPLE_CV_TEXT)
 
 
-def test_extract_raises_on_missing_required_field():
+def test_extract_allows_missing_nome():
+    """Currículos anonimizados/redigidos não têm nome explícito no texto — o schema
+    aceita isso (nome vira None) em vez de forçar o LLM a inventar um nome pra passar
+    na validação."""
     without_nome = {k: v for k, v in SAMPLE_JSON.items() if k != "nome"}
-    with pytest.raises(ExtractionError, match="validation failed"):
-        CurriculoExtractor(MockExtractor(without_nome)).extract(SAMPLE_CV_TEXT)
+    result = CurriculoExtractor(MockExtractor(without_nome)).extract(SAMPLE_CV_TEXT)
+    assert result.nome is None
 
 
 def test_extract_minimal_cv_all_optionals_none():
@@ -197,13 +200,17 @@ def test_factory_raises_on_unknown_provider():
 
 @pytest.mark.integration
 def test_gemini_extracts_sample_cv():
+    """Via factory, para exercitar o mesmo caminho da aplicação (Vertex AI quando
+    `GCP_PROJECT` está preenchido) — ver a nota em test_vaga_extraction.py."""
     from src.config import settings
-    from src.extraction.providers.gemini import GeminiExtractor
+    from src.extraction.factory import create_extractor
 
-    if not settings.gemini_api_key:
-        pytest.skip("GEMINI_API_KEY not set in .env")
+    if not settings.gcp_project and (
+        not settings.gemini_api_key or settings.gemini_api_key == "No Key Provided"
+    ):
+        pytest.skip("nem GCP_PROJECT nem GEMINI_API_KEY configurados no .env")
 
-    llm = GeminiExtractor(api_key=settings.gemini_api_key, model=settings.gemini_model)
+    llm = create_extractor(settings)
     result = CurriculoExtractor(llm).extract(SAMPLE_CV_TEXT)
 
     assert isinstance(result, CurriculoEstruturado)

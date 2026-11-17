@@ -2,10 +2,12 @@
 .env
 uv.lock
 .qdrant_storage
-context
-CLAUDE.md
 tcc_matching.egg-info
 .pytest_cache
 data
 
 pdfs
+__pycache__/
+*.pyc
+context/
+_analise_dups.json

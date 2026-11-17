@@ -5,6 +5,9 @@ from abc import ABC, abstractmethod
 class BaseEmbedder(ABC):
     """Abstract embedding provider. Implement `embed_batch` to add a new provider."""
 
+    model: str | None = None
+    """Nome do modelo usado, para rastreamento de proveniência (ex: payload do Qdrant)."""
+
     @abstractmethod
     def embed_batch(self, texts: list[str]) -> list[list[float]]:
         """Embed a batch of texts, returning one vector per text in the same order."""

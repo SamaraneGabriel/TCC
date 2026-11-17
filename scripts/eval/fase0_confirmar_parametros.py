@@ -10,8 +10,8 @@ pseudoaleatório determinístico, não um embedding real):
   3. que o sistema aceita `limit=TOP_POOL` e devolve `min(TOP_POOL, N)` ids distintos;
   4. que dá pra enumerar todos os ids do banco — sem isso não existe universo do
      estrato C, que é definido por complemento de conjunto (seção 4.2 passo 4);
-  5. que o pool de vagas existe e tem tamanho suficiente pra sortear
-     `N_VAGAS_ESTUDO`.
+  5. que o pool de vagas existe, tem tamanho suficiente pra sortear
+     `N_VAGAS_ESTUDO` e cobre o mínimo de áreas/senioridades da seção 2.
 
 Sai com código != 0 se qualquer bloqueio for encontrado — a Fase 1 não deve rodar
 antes disso passar.
@@ -30,6 +30,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from src.config import settings
 from src.evaluation.plano.config import ConfigAvaliacao
+from src.evaluation.plano.pool_vagas import carregar_pool, cobertura_pool
 from src.vectorstore.store import COLLECTION_NAME, CurriculoStore
 
 EXTENSOES_VAGA = (".txt", ".json", ".md")
@@ -157,6 +158,43 @@ def checar_enumeracao_ids(cfg: ConfigAvaliacao, store: CurriculoStore, indexados
     }
 
 
+def checar_pool_vagas_jsonl(cfg: ConfigAvaliacao, caminho: Path) -> dict:
+    """Pool montado por `scripts/eval/preparar_pool_vagas.py` (seção 2.1)."""
+    try:
+        pool = carregar_pool(caminho)
+    except Exception as e:
+        return {
+            "nome": "pool de vagas disponível",
+            "ok": False,
+            "bloqueios": [f"não consegui ler {caminho}: {e}"],
+            "vagas_encontradas": 0,
+            "arquivo": str(caminho),
+        }
+
+    cobertura = cobertura_pool(pool)
+    bloqueios = []
+    if len(pool) < cfg.n_vagas_estudo:
+        bloqueios.append(
+            f"{len(pool)} vaga(s) no pool, menos que N_VAGAS_ESTUDO={cfg.n_vagas_estudo}"
+        )
+    if len(cobertura["areas"]) < cfg.min_areas_tecnicas:
+        bloqueios.append(
+            f"{len(cobertura['areas'])} área(s) técnica(s) no pool, "
+            f"mínimo {cfg.min_areas_tecnicas} (seção 2, passo 3)"
+        )
+    if len([s for s in cobertura["senioridades"] if s]) < cfg.min_senioridades:
+        bloqueios.append(f"senioridades distintas no pool abaixo de {cfg.min_senioridades}")
+    return {
+        "nome": "pool de vagas disponível",
+        "ok": not bloqueios,
+        "bloqueios": bloqueios,
+        "vagas_encontradas": len(pool),
+        "arquivo": str(caminho),
+        "areas": cobertura["areas"],
+        "senioridades": {str(k): v for k, v in cobertura["senioridades"].items()},
+    }
+
+
 def checar_pool_vagas(cfg: ConfigAvaliacao, vagas_dir: Path | None) -> dict:
     if vagas_dir is None:
         return {
@@ -206,11 +244,8 @@ def _derivados(cfg: ConfigAvaliacao) -> dict:
         "n_c": cfg.n_c,
         "itens_por_vaga": cfg.itens_por_vaga,
         "itens_no_estudo": cfg.itens_por_vaga * cfg.n_vagas_estudo,
-        "auditoria_por_estrato": {
-            "A": cfg.n_auditoria(cfg.k),
-            "B": cfg.n_auditoria(cfg.n_b),
-            "C": cfg.n_auditoria(cfg.n_c),
-        },
+        "itens_anotados_por_humano": cfg.n_calibracao_total,
+        "itens_double_label": cfg.n_double_label,
     }
 
 
@@ -253,6 +288,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Fase 0 do plano de avaliação")
     parser.add_argument("--vagas-dir", help="diretório com o pool de vagas (.txt/.json/.md)")
     parser.add_argument(
+        "--pool-vagas",
+        default="data/eval/plano/pool_vagas.jsonl",
+        help="JSONL do pool montado por scripts/eval/preparar_pool_vagas.py",
+    )
+    parser.add_argument(
         "--qdrant-path",
         default=settings.qdrant_local_path,
         help="storage local do Qdrant (default: config do projeto)",
@@ -274,7 +314,11 @@ def main() -> int:
             checar_limit_top_pool(cfg, store, indexados),
             checar_enumeracao_ids(cfg, store, indexados),
         ]
-    checks.append(checar_pool_vagas(cfg, _achar_vagas_dir(args.vagas_dir)))
+    pool_jsonl = Path(args.pool_vagas)
+    if pool_jsonl.exists() and not args.vagas_dir:
+        checks.append(checar_pool_vagas_jsonl(cfg, pool_jsonl))
+    else:
+        checks.append(checar_pool_vagas(cfg, _achar_vagas_dir(args.vagas_dir)))
 
     derivados = _derivados(cfg)
     aprovado = all(c["ok"] for c in checks)

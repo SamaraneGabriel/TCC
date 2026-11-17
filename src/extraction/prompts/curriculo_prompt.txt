@@ -7,7 +7,7 @@ Não invente dados que não estejam explicitamente no currículo.
 
 Schema esperado:
 {
-  "nome": "string — nome completo do candidato",
+  "nome": "string | null — nome completo do candidato, use null se não houver nome explícito no texto",
   "email": "string | null",
   "telefone": "string | null",
   "localidade": "string | null — ex: 'Belo Horizonte, MG'",
@@ -20,8 +20,8 @@ Schema esperado:
   "idiomas": ["string — ex: 'Português (nativo)', 'Inglês (avançado)'"],
   "experiencias": [
     {
-      "cargo": "string",
-      "empresa": "string",
+      "cargo": "string | null — use null se não houver cargo explícito no texto",
+      "empresa": "string | null — use null se não houver empresa explícita no texto",
       "duracao_meses": "integer | null — duração total em meses",
       "descricao": "string | null — resumo das atividades",
       "skills_utilizadas": ["string"]
@@ -29,16 +29,16 @@ Schema esperado:
   ],
   "formacoes": [
     {
-      "grau": "string — um de: 'graduação', 'pós-graduação', 'mestrado', 'doutorado', 'técnico'",
-      "curso": "string",
-      "instituicao": "string",
+      "grau": "string | null — um de: 'graduação', 'pós-graduação', 'mestrado', 'doutorado', 'técnico'; use null se não houver grau explícito no texto",
+      "curso": "string | null — use null se não houver curso explícito no texto",
+      "instituicao": "string | null — use null se não houver instituição explícita no texto",
       "ano_conclusao": "integer | null",
       "em_andamento": "boolean"
     }
   ],
   "certificacoes": [
     {
-      "nome": "string",
+      "nome": "string | null — use null se não houver nome explícito no texto",
       "instituicao": "string | null",
       "ano": "integer | null"
     }

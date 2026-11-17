@@ -6,7 +6,12 @@ def create_extractor(settings: Settings) -> BaseExtractor:
     """Instantiate the correct LLM provider based on settings.llm_provider."""
     if settings.llm_provider == "gemini":
         from .providers.gemini import GeminiExtractor
-        return GeminiExtractor(api_key=settings.gemini_api_key, model=settings.gemini_model)
+        return GeminiExtractor(
+            api_key=settings.gemini_api_key,
+            model=settings.gemini_model,
+            project=settings.gcp_project,
+            location=settings.gcp_location,
+        )
 
     if settings.llm_provider == "openai":
         from .providers.openai import OpenAIExtractor

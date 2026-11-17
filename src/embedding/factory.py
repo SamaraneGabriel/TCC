@@ -10,6 +10,8 @@ def create_embedder(settings: Settings) -> BaseEmbedder:
             api_key=settings.gemini_api_key,
             model=settings.gemini_embedding_model,
             dimension=settings.embedding_dimension,
+            project=settings.gcp_project,
+            location=settings.gcp_location,
         )
 
     raise ValueError(

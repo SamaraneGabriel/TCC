@@ -1,31 +1,37 @@
 from typing import Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 
 
 class Experiencia(BaseModel):
-    cargo: str
-    empresa: str
+    cargo: Optional[str] = None
+    empresa: Optional[str] = None
     duracao_meses: Optional[int] = None
     descricao: Optional[str] = None
     skills_utilizadas: list[str] = []
 
+    @field_validator("duracao_meses", mode="before")
+    @classmethod
+    def _arredondar_duracao(cls, v):
+        # O LLM devolve frações quando o currículo diz "um mês e meio" — arredonda em vez de rejeitar.
+        return round(v) if isinstance(v, float) else v
+
 
 class Formacao(BaseModel):
-    grau: str  # "graduação", "pós-graduação", "mestrado", "doutorado", "técnico"
-    curso: str
-    instituicao: str
+    grau: Optional[str] = None  # "graduação", "pós-graduação", "mestrado", "doutorado", "técnico"
+    curso: Optional[str] = None
+    instituicao: Optional[str] = None
     ano_conclusao: Optional[int] = None
     em_andamento: bool = False
 
 
 class Certificacao(BaseModel):
-    nome: str
+    nome: Optional[str] = None
     instituicao: Optional[str] = None
     ano: Optional[int] = None
 
 
 class CurriculoEstruturado(BaseModel):
-    nome: str
+    nome: Optional[str] = None
     email: Optional[str] = None
     telefone: Optional[str] = None
     localidade: Optional[str] = None

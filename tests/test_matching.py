@@ -6,7 +6,7 @@ import pytest
 from qdrant_client import QdrantClient
 
 from src.embedding.base import BaseEmbedder
-from src.matching.ranker import rank
+from src.matching.ranker import rank, score_posicional
 from src.matching.retriever import buscar_candidatos
 from src.schemas.curriculo import CurriculoEstruturado
 from src.schemas.vaga import VagaEstruturada
@@ -128,7 +128,7 @@ def test_rank_computes_skills_overlap_correctly():
 
 
 def test_rank_skills_overlap_can_overcome_modest_vector_rank_gap():
-    # posicoes 0..3 -> score_norm 1.0, 0.667, 0.333, 0.0 (ver rank()).
+    # posicoes 0..3 -> score_norm 1.0, 0.984, 0.968, 0.953 (decaimento RRF, ver rank()).
     # o 2o colocado no vetor, com skills completas, deve superar o 1o colocado sem skills.
     candidatos = [
         make_result("Vetor top, sem skills", skills=[]),
@@ -149,6 +149,36 @@ def test_rank_senioridade_and_localidade_match_flags():
     assert ranqueados["Match Tudo"].senioridade_match is True
     assert ranqueados["Match Tudo"].localidade_match is True
     assert ranqueados["Outro Local"].localidade_match is False
+
+
+def test_score_posicional_nao_depende_do_tamanho_da_lista():
+    """Desvio D7: o sinal vetorial vem da posição absoluta, não da fração
+    `posicao/(n-1)`. Sem isso, pedir mais candidatos na busca reordena o topo."""
+    assert score_posicional(0) == 1.0
+    assert score_posicional(24) == pytest.approx(0.7176, abs=1e-4)   # 61/85
+    assert score_posicional(99) == pytest.approx(0.3813, abs=1e-4)   # 61/160
+    assert score_posicional(10) > score_posicional(11)  # monotônico
+
+
+def test_rank_de_prefixo_preserva_a_ordem_relativa():
+    """A propriedade que a §5.2 do plano de avaliação pressupõe ao mandar chamar
+    o sistema com `limit=TOP_POOL` em vez do K de produção: ranquear os mesmos
+    candidatos dentro de uma lista maior não muda a ordem entre eles.
+
+    Antes da correção D7 isto falhava — medido em 3 vagas reais, o top-25 de uma
+    busca com limit=100 coincidia em 2 a 7 das 25 posições com o de limit=25."""
+    candidatos = [
+        make_result("A", skills=["Python"]),
+        make_result("B", skills=[]),
+        make_result("C", skills=["Python", "FastAPI", "Docker"]),
+        make_result("D", skills=["Docker"]),
+        make_result("E", skills=["FastAPI"]),
+        make_result("F", skills=[]),
+    ]
+    prefixo = {c.nome for c in candidatos[:3]}
+    dentro_do_todo = [r.candidato.nome for r in rank(VAGA, candidatos) if r.candidato.nome in prefixo]
+    sozinhos = [r.candidato.nome for r in rank(VAGA, candidatos[:3])]
+    assert dentro_do_todo == sozinhos
 
 
 def test_rank_handles_single_candidate_without_zero_division():

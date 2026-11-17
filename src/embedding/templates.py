@@ -74,7 +74,10 @@ def vaga_to_perfil_text(v: VagaEstruturada) -> str:
     )
     senioridade = v.senioridade or "não informado"
 
-    partes = [f"Vaga de {v.titulo} para profissional de {area} com {anos}, nível {senioridade}."]
+    # Sem título (ver VagaEstruturada.titulo), a frase cai para a área — que é o
+    # que o texto do anúncio de fato indica nesse caso.
+    alvo = v.titulo or area
+    partes = [f"Vaga de {alvo} para profissional de {area} com {anos}, nível {senioridade}."]
 
     if v.formacao_minima:
         partes.append(f"Formação mínima: {v.formacao_minima}.")

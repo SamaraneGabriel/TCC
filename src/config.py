@@ -11,7 +11,16 @@ class Settings(BaseSettings):
     llm_provider: str = "gemini"
 
     gemini_api_key: str = os.getenv("GEMINI_API_KEY", "No Key Provided")
+    # Claude via API da Anthropic — só o juiz alternativo da calibração usa (rodar_juiz.py --juiz haiku).
+    anthropic_api_key: str = ""
     gemini_model: str = "gemini-3.1-flash-lite"
+
+    # Se preenchido, os providers Gemini usam Vertex AI (billing via este projeto GCP,
+    # autenticado via ADC — `gcloud auth application-default login`) em vez da Developer
+    # API com gemini_api_key. Necessário pra sair do rate limit do tier gratuito usando
+    # créditos de faturamento do GCP.
+    gcp_project: str = ""
+    gcp_location: str = "global"   # gemini-3.1-flash-lite so existe em `global` no Vertex
 
     openai_api_key: str = ""
     openai_model: str = "gpt-4o-mini"

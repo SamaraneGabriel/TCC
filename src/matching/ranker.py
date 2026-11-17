@@ -10,6 +10,27 @@ esse valor bruto amplifica ruído de desempate do Qdrant num salto artificial de
 a posição no resultado (já ordenado por `CurriculoStore.search`) como sinal
 vetorial normalizado, não o valor de `score` em si.
 
+Decaimento independente do tamanho da lista (corrigido em 2026-09-22, desvio D7
+do plano de avaliação — ver `context/11_DESVIOS_AVALIACAO.md`)
+-------------------------------------------------------------------------------
+A normalização anterior era `1 - posicao/(n-1)`, com `n` = quantos candidatos
+foram passados. Isso fazia o score de um candidato depender de **quantos outros
+foram pedidos na busca**: com n=100 a distância entre posições vizinhas é 1/99,
+com n=25 é 1/24, e o peso relativo de skills/senioridade/localidade muda junto.
+Medido em 3 vagas reais, o top-25 obtido buscando 100 candidatos coincidia em
+apenas 2 a 7 das 25 posições com o obtido buscando 25 — o mesmo sistema, a mesma
+vaga e o mesmo banco davam rankings diferentes conforme a profundidade da busca.
+
+Agora o sinal usa o decaimento recíproco do RRF, `(K0+1)/(K0+1+posicao)`, que
+depende só da posição absoluta: vale 1,0 na primeira posição, 0,718 na 25ª e 0,381 na 100ª, de
+forma idêntica esteja a lista com 25 ou 10.000 itens. Buscar mais fundo passa a
+só acrescentar candidatos ao fim da lista, nunca a reordenar o topo — que é o
+comportamento que a seção 5.2 do plano de avaliação pressupõe ao mandar chamar o
+sistema com `limit=TOP_POOL` em vez do K de produção.
+
+K0=60 é a constante usual do RRF (Cormack et al., 2009), a mesma família de
+decaimento que o `CurriculoStore.search` já usa para fundir os dois vetores.
+
 Pesos abaixo são um ponto de partida, não uma calibração — ajustar com os
 resultados da avaliação (Precision@K/MRR) quando essa fase existir.
 """
@@ -20,6 +41,9 @@ from ..schemas.vaga import VagaEstruturada
 from ..vectorstore.store import SearchResult
 
 _ETAPA = "matching.ranker"
+
+# Constante do decaimento recíproco (RRF). Ver a nota no topo do módulo.
+K0_RRF = 60
 
 PESO_VETORIAL = 0.6
 PESO_SKILLS = 0.3
@@ -39,21 +63,32 @@ class ResultadoRankeado:
     candidato: SearchResult
 
 
+def score_posicional(posicao: int) -> float:
+    """Sinal vetorial a partir da posição (0-based) no resultado da busca.
+
+    `(K0+1)/(K0+1+posicao)`: 1,0 na primeira posição, decaimento suave e
+    **independente de quantos candidatos a lista tem** — ver a nota no topo do
+    módulo sobre por que isso importa."""
+    return (K0_RRF + 1) / (K0_RRF + 1 + posicao)
+
+
 def rank(vaga: VagaEstruturada, candidatos: list[SearchResult]) -> list[ResultadoRankeado]:
     """`candidatos` deve vir na ordem retornada por `CurriculoStore.search`
     (melhor fusão vetorial primeiro) — a posição na lista é o sinal usado,
-    não `SearchResult.score`."""
+    não `SearchResult.score`.
+
+    Pedir mais candidatos não altera a ordem relativa dos primeiros: o sinal
+    posicional não depende do tamanho da lista."""
     if not candidatos:
         dbg(_ETAPA, "nenhum candidato para ranquear")
         return []
 
     dbg(_ETAPA, f"ranqueando {len(candidatos)} candidato(s)")
-    n = len(candidatos)
     skills_vaga = {s.lower() for s in (vaga.skills_obrigatorias + vaga.skills_desejadas)}
 
     resultados = []
     for posicao, c in enumerate(candidatos):
-        score_norm = 1 - (posicao / (n - 1)) if n > 1 else 1.0
+        score_norm = score_posicional(posicao)
 
         skills_candidato = {s.lower() for s in c.skills_tecnicas}
         match = sorted(skills_candidato & skills_vaga)
